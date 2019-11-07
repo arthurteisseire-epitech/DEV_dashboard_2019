@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR /usr/dashboard/client
+WORKDIR /usr/dashboard/server
 
 COPY . .
 
