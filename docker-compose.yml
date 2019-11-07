@@ -7,7 +7,11 @@ services:
   server:
     build: server
     ports:
-      - "3001:3001"
+      - "8081:3000"
+    environment:
+      - MONGOURI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@localhost:27017/dashboard_db
+    depends_on:
+      - mongo
   mongo:
     image: mongo
     environment:
@@ -15,4 +19,4 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=dashboard_db
     ports:
-      - 27017:27017
+      - "27017:27017"
