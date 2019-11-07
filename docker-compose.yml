@@ -1,6 +1,6 @@
 version: '3'
 services:
   dashboard:
-    build: .
+    build: client
     ports:
       - "8080:3000"
