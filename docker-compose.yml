@@ -1,6 +1,22 @@
 version: '3'
 services:
-  dashboard:
+  client:
     build: client
     ports:
       - "8080:3000"
+  server:
+    build: server
+    ports:
+      - "8081:3000"
+    environment:
+      - MONGOURI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@localhost:27017/dashboard_db
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=dashboard_db
+    ports:
+      - "27017:27017"
