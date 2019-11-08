@@ -24,7 +24,12 @@ services:
       - MONGO_INITDB_DATABASE=${MONGO_DBNAME}
     networks:
       - db
+    volumes:
+      - db-data:/data/db
     restart: always
 
 networks:
   db:
+
+volumes:
+  db-data:

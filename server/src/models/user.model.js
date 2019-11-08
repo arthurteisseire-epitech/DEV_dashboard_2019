@@ -23,10 +23,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 4,
     maxlength: 128
-  },
-  name: {
-    type: String,
-    maxlength: 50
   }
   // activationKey: {
   //   type: String,
