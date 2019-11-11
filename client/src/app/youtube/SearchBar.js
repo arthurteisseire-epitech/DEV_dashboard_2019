@@ -1,33 +1,23 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import YTSearch from 'youtube-api-search';
 import VideoList from "./VideoList";
 
 
-export default class SearchBar extends Component {
-    constructor(props) {
-        super(props);
+export default function SearchBar(props) {
+    const [videos, setVideos] = useState([]);
 
-        this.state = {
-            videos: []
-        };
-        this.videoSearch('React Tutorials');
-    }
-
-    videoSearch(term) {
+    const videoSearch = (term) => {
         YTSearch({key: process.env.REACT_APP_API_KEY_YOUTUBE, term: term}, (data) => {
-            this.setState({
-                videos: data
-            });
+            setVideos(data);
         });
-    }
+    };
 
-    render() {
-        return (
-            <div>
-                <input/>
-                <VideoList videos={this.state.videos}/>
-            </div>
-        )
-    }
+    videoSearch('React Tutorials');
+
+    return (
+        <div>
+            <input/>
+            <VideoList videos={videos}/>
+        </div>
+    )
 }
-
