@@ -9,13 +9,11 @@ export default function Weather(props) {
 
     const [temp, setTemp] = useState(0);
     const [description, setDescription] = useState("");
-    const [loaded, setLoaded] = useState(false);
 
     const update = (cityname) => {
         ApiWeatherGetInfoFromCity(cityname).then((data) => {
             setTemp(data.main.temp - 273.15);
             setDescription(data.weather[0].description);
-            setLoaded(true)
         });
     };
 
