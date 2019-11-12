@@ -3,20 +3,33 @@ services:
   client:
     build: client
     ports:
-      - "8080:3000"
+      - "3000:3000"
+    restart: always
+
   server:
     build: server
     ports:
-      - "8081:3000"
+      - "8080:3000"
     environment:
-      - MONGOURI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@localhost:27017/dashboard_db
+      - MONGOURI=mongodb://mongo:27017/${MONGO_DBNAME}
+    networks:
+      - db
     depends_on:
       - mongo
+    restart: always
+
   mongo:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
-      - MONGO_INITDB_DATABASE=dashboard_db
-    ports:
-      - "27017:27017"
+      - MONGO_INITDB_DATABASE=${MONGO_DBNAME}
+    networks:
+      - db
+    volumes:
+      - db-data:/data/db
+    restart: always
+
+networks:
+  db:
+
+volumes:
+  db-data:

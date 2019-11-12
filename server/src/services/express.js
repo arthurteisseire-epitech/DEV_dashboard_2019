@@ -22,7 +22,7 @@ if (config.env !== 'test') app.use(morgan('combined'))
 app.use(passport.initialize())
 passport.use('jwt', passportJwt.jwt)
 
-app.use('/api', apiRouter)
+app.use('/', apiRouter)
 app.use(errorHandler.handleNotFound)
 app.use(errorHandler.handleError)
 
