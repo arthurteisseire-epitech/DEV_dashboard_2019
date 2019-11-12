@@ -15,7 +15,7 @@ export default function YoutubeReader(props) {
 
     return (
         <div>
-            <SearchBar onSearchTermChange={searchTerm => videoSearch(searchTerm)}/>
+            <SearchBar onSearchTermChange={videoSearch}/>
             <VideoList videos={videos}/>
         </div>
     )
