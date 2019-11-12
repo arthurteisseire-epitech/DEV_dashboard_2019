@@ -18,7 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems} from './listItems';
-import Deposits from '../widgets/Deposits';
+import Weather from '../widgets/Weather';
 import Orders from '../widgets/Orders';
 
 function Copyright() {
@@ -90,7 +90,7 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Weather />
               </Paper>
             </Grid>
             {/* Recent Orders */}
