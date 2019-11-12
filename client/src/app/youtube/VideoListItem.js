@@ -5,7 +5,7 @@ export default function VideoListItem(props) {
     const imageUrl = video.snippet.thumbnails.default.url;
 
     return (
-        <li>
+        <li onClick={() => props.onUserSelected(video)}>
             <div>
                 <div>
                     <div>{video.snippet.title}</div>
