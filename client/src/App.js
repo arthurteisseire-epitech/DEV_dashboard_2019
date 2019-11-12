@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import '@material-ui/core'
-import YoutubeReader from "./app/youtube/YoutubeReader";
+import YoutubeReader from "./app/youtube/readerComponent/YoutubeReader";
 
 function App() {
   return (
