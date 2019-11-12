@@ -13,8 +13,6 @@ export default function YoutubeReader(props) {
         });
     };
 
-    videoSearch('React Tutorials');
-
     return (
         <div>
             <SearchBar onSearchTermChange={searchTerm => videoSearch(searchTerm)}/>
