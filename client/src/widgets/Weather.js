@@ -24,7 +24,7 @@ export default function Weather(props) {
             <Title>Weather</Title>
             <Input
                 onChange={event => update(event.target.value)}
-                placeholder="Placeholder"
+                placeholder="City Name"
                 inputProps={{
                     'aria-label': 'description',
                 }}
