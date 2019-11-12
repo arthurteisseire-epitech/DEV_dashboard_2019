@@ -12,6 +12,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
+    "rss-parser": "^3.7.3",
     "youtube-api-search": "0.0.5"
   },
   "scripts": {

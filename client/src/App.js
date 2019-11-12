@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import '@material-ui/core'
-import YoutubeReader from "./app/youtube/readerComponent/YoutubeReader";
+import YggRss from "./app/ygg/YggRss";
 
 function App() {
-  return (
-    <div className="App">
-        <YoutubeReader/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <YggRss/>
+        </div>
+    );
 }
 
 export default App;
