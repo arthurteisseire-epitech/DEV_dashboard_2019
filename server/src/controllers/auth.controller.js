@@ -19,7 +19,7 @@ exports.register = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
-    const user = await User.findAndGenerateToken(req.body);
+    const user = req.user;
     user.setWeatherCity(req.body.cityname);
     const savedUser = await user.save();
     res.send(savedUser.transform())
