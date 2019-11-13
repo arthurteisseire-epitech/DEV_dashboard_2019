@@ -8,21 +8,22 @@ import {
 import arrayMove from 'array-move';
 import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 import Weather from "./widgets/Weather";
+import {CardGroup} from "reactstrap";
 
 
 const DragHandle = sortableHandle(() => <i className="fas fa-arrows-alt"/>);
 
-const SortableItem = sortableElement(() => (
+const SortableItem = sortableElement((value) => (
         <Weather/>
 ));
 
 const SortableContainer = sortableContainer(({children}) => {
-    return <ul >{children}</ul>;
+    return <CardGroup>{children}</CardGroup>;
 });
 
 export default class WidgetZone extends Component {
     state = {
-        items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+        items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
     };
 
     onSortEnd = ({oldIndex, newIndex}) => {
@@ -35,7 +36,7 @@ export default class WidgetZone extends Component {
         const {items} = this.state;
 
         return (
-            <SortableContainer onSortEnd={this.onSortEnd} useDragHandle>
+            <SortableContainer onSortEnd={this.onSortEnd} useDragHandle axis={'xy'}>
                 {items.map((value, index) => (
                     <SortableItem key={`item-${value}`} index={index} value={value} />
                 ))}
