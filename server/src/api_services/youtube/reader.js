@@ -15,7 +15,6 @@ module.exports = (req, res) => {
 
     axios.get(ROOT_URL, {params: params}).then((response) => {
         res.json(response.data.items);
-        console.log(res);
     }).catch((error) => {
         res.send(error);
     });
