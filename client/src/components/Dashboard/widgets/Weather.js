@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import ApiWeatherGetInfoFromCity from '../../../api/WeatherApi'
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
-import Typography from '@material-ui/core/Typography';
-import {Card, CardBody, CardTitle, Container, Row, Col} from "reactstrap";
+import {Card, CardBody, CardTitle, Row, Col} from "reactstrap";
+import {sortableHandle} from "react-sortable-hoc";
 
 
 export default function Weather(props) {
@@ -18,10 +17,13 @@ export default function Weather(props) {
         });
     };
 
+    const DragHandle = sortableHandle(() => <i className="fas fa-arrows-alt"/>);
+
     return (
         <Card className="card-stats mb-4 mb-xl-0">
             <CardBody>
                 <Row>
+                    <DragHandle/>
                     <div className="col">
                         <CardTitle tag="h5" className="text-uppercase text-muted mb-0">
                             Weather
@@ -52,21 +54,3 @@ export default function Weather(props) {
         </Card>
     );
 }
-
-
-// return (
-//     <Card className="card-stats mb-4 mb-xl-0">
-//         <CardBody>
-
-//             <Input
-//                 onChange={event => update(event.target.value)}
-//                 placeholder="City Name"
-//                 inputProps={{
-//                     'aria-label': 'description',
-//                 }}
-//             />
-//             {temp.toFixed(2)}°C
-//             <Typography component="h3"> Description : {description} </Typography>
-//         </CardBody>
-//     </Card>
-// );

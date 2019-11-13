@@ -20,8 +20,9 @@ import React from "react";
 // reactstrap components
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import Weather from "./widgets/Weather";
+import WidgetZone from './WidgetZone'
 
-class Header extends React.Component {
+class Dashboard extends React.Component {
   render() {
     return (
       <>
@@ -29,6 +30,7 @@ class Header extends React.Component {
           <Container fluid>
             <div className="header-body">
               {/* Card stats */}
+              <WidgetZone></WidgetZone>
               <Row>
                 <Col lg="6" xl="3">
                   <Weather/>
@@ -130,4 +132,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Dashboard;
