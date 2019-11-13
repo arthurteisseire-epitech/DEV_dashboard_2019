@@ -2,11 +2,12 @@ const Parser = require('rss-parser');
 
 const parser = new Parser();
 
-response = (err, res) => {
+response = (req, res) => {
     parser.parseURL('https://www2.yggtorrent.pe/rss?action=generate&type=subcat&id=2171', function (err, feed) {
         if (err)
             res.send(err);
-        res.json(feed);
+        else
+            res.json(feed);
     })
 };
 

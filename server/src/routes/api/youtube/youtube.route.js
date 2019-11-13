@@ -2,9 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
-const yggRss = require('../../../api_services/ygg/rss');
+const youtubeReader = require('../../../api_services/youtube/reader');
 const auth = require('../../../middlewares/authorization');
 
-router.get('/rss', yggRss);
+router.get('/reader', youtubeReader);
 
 module.exports = router;
