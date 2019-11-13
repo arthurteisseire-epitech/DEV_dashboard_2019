@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import YTSearch from "youtube-api-search";
 import VideoList from "./VideoList";
 import SearchBar from "./SearchBar";
 import VideoDetail from "./VideoDetail";
