@@ -4,8 +4,6 @@ const ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 
 module.exports = (req, res) => {
-    console.log('URI :: ' + req.originalUrl);
-
     const url = req.originalUrl;
 
     const params = {
