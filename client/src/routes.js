@@ -17,11 +17,7 @@
 */
 import Index from "views/Index.jsx";
 import Profile from "views/examples/Profile.jsx";
-import Maps from "views/examples/Maps.jsx";
-import Register from "views/examples/Register.jsx";
-import Login from "views/examples/Login.jsx";
-import Tables from "views/examples/Tables.jsx";
-import Icons from "views/examples/Icons.jsx";
+import Settings from "views/examples/Settings.jsx";
 
 var routes = [
   {
@@ -32,14 +28,14 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
+    path: "/settings",
     name: "Settings",
     icon: "ni ni-bullet-list-67 text-red",
-    component: Tables,
+    component: Settings,
     layout: "/admin"
   },
   {
-    path: "/user-profile",
+    path: "/profile",
     name: "Profile",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
