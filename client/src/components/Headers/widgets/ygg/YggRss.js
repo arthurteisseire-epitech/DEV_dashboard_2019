@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import YggItem from "./YggItem";
-import ApiCall from "../services/ApiCall";
+import ApiCall from "../../../../services/ApiCall";
 
 export default function YggRss() {
 
