@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
     const params = {
         appid: process.env.WEATHER_API_KEY,
-        q: req.query.cityname
+        q: req.user.weather_city
     };
 
     return axios.get(ROOT_URL, {params: params})
