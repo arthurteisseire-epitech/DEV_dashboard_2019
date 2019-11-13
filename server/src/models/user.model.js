@@ -30,6 +30,13 @@ const userSchema = new Schema({
     default: 'Lille',
     minlength: 2,
     maxlength: 30
+  },
+  youtube_term: {
+    type: String,
+    required: false,
+    default: 'Haskell',
+    minlength: 2,
+    maxlength: 30
   }
   // activationKey: {
   //   type: String,
@@ -103,6 +110,10 @@ userSchema.method({
 
   setWeatherCity(cityname) {
     this.weather_city = cityname;
+  },
+
+  setYoutubeTerm(term) {
+    this.youtube_term = term;
   }
 });
 

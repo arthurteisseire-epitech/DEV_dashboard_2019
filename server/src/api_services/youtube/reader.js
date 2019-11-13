@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     const params = {
         part: 'snippet',
         key: process.env.YOUTUBE_API_KEY,
-        q: req.query.term,
+        q: req.user.youtube_term,
         type: 'video'
     };
 
