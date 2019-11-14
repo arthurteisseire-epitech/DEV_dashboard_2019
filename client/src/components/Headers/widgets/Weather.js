@@ -10,7 +10,7 @@ export default function Weather(props) {
     const [description, setDescription] = useState("");
 
     const update = (cityname) => {
-        Caller.api('/weather/city', {cityname: cityname})
+        Caller.api('/weather/city')
             .then((res) => {
                 const data = res.data;
                 setTemp(data.main.temp - 273.15);

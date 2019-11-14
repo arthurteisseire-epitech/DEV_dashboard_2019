@@ -9,11 +9,12 @@ export default function YoutubeReader(props) {
     const [selectedVideo, setSelectedVideo] = useState(null);
 
     const videoSearch = (term) => {
-        Caller.api('/youtube/reader', {term: term}).then((res) => {
-            const data = res.data;
-            setVideos(data);
-            setSelectedVideo(data[0]);
-        });
+        Caller.api('/youtube/reader')
+            .then((res) => {
+                const data = res.data;
+                setVideos(data);
+                setSelectedVideo(data[0]);
+            });
     };
 
     return (

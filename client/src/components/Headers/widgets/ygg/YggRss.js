@@ -7,14 +7,15 @@ export default function YggRss() {
     const [content, setContent] = useState([]);
 
     const getRssFeed = () => {
-        Caller.api('/ygg/rss').then((res) => {
-            const feed = res.data;
-            setContent([]);
-            const items = feed.items.slice(0, 5).map(i => {
-                return <YggItem key={i.guid} item={i}/>
+        Caller.api('/ygg/rss')
+            .then((res) => {
+                const feed = res.data;
+                setContent([]);
+                const items = feed.items.slice(0, 5).map(i => {
+                    return <YggItem key={i.guid} item={i}/>
+                });
+                setContent(items);
             });
-            setContent(items);
-        });
     };
 
     useEffect(getRssFeed, []);
