@@ -51,7 +51,7 @@ import {
     Row,
     Col
 } from "reactstrap";
-import cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 
 var ps;
 
@@ -100,6 +100,11 @@ class Sidebar extends React.Component {
             );
         });
     };
+
+    signOut() {
+        Cookies.remove('token');
+        window.location = "/";
+    }
 
     render() {
         const {bgColor, routes, logo} = this.props;
@@ -192,7 +197,7 @@ class Sidebar extends React.Component {
                                 <DropdownItem onClick={e => {
                                     e.preventDefault();
                                     console.log('toto');
-                                    cookie.remove('token');
+                                    Cookies.remove('token');
                                     window.location = "/";
                                 }}>
                                     <i className="ni ni-user-run"/>
@@ -250,10 +255,7 @@ class Sidebar extends React.Component {
                         {/* Navigation */}
                         <Nav navbar>{this.createLinks(routes)}</Nav>
 
-                        <Button onClick={() => {
-                            cookie.remove('token');
-                            window.location = "/";
-                        }}>
+                        <Button onClick={this.signOut}>
                             Log out
                         </Button>
                     </Collapse>

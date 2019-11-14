@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as Caller from "../services/Caller";
-import cookie from 'react-cookies';
+import Cookies from 'js-cookie';
 import isAdmin from "./isAdmin";
 
 function Copyright() {
@@ -63,8 +63,8 @@ export default function SignIn() {
             email: event.target.email.value,
             password: event.target.password.value
         }).then((response) => {
-            cookie.save('token', response.data.token);
-            console.log(response.data.token);
+            Cookies.remove('token');
+            Cookies.set('token', response.data.token);
             window.location = "/admin/index";
         }).catch((err) => {
             console.log(err);

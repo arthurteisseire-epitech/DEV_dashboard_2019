@@ -32,10 +32,8 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/" render={props => <SignIn {...props}/>}/>
-            {/*<Route exact path="/admin/index" render={props => <AdminLayout {...props} />}/>*/}
             <Route exact path="/auth" render={props => <AuthLayout {...props} />}/>
             <PrivateRoute exact path="/admin/index" component={AdminLayout}/>
-            {/*<Redirect from="/admin" to="/admin/index"/>*/}
         </Switch>
     </BrowserRouter>,
     document.getElementById("root")
