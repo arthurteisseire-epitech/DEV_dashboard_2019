@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import * as Caller from "../services/Caller";
 import Cookies from 'js-cookie';
 import isAdmin from "./isAdmin";
+import {toast} from 'react-toastify';
 
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +53,7 @@ export default function SignIn() {
             Cookies.set('token', response.data.token);
             window.location = "/admin/index";
         }).catch((err) => {
-            console.log(err);
+            toast.error('Invalid email / password');
         });
     };
 

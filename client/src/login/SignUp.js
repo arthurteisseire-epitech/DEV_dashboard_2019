@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as Caller from "../services/Caller";
+import {toast} from 'react-toastify';
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -45,7 +46,7 @@ export default function SignIn() {
             console.log(response);
             window.location = "/";
         }).catch((err) => {
-            console.log(err);
+            toast.error('Already registered or email error');
         });
     };
 

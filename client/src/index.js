@@ -28,7 +28,10 @@ import AuthLayout from "layouts/Auth.jsx";
 import SignIn from "./login/SignIn";
 import SignUp from "./login/SignUp";
 import {PrivateRoute} from "./login/PrivateRoute";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
