@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
-import Typography from '@material-ui/core/Typography';
-import ApiCall from "../../../services/ApiCall";
+import * as Caller from "../../../services/Caller";
 import {Card, CardBody, CardTitle, Container, Row, Col} from "reactstrap";
 
 
@@ -12,12 +10,12 @@ export default function Weather(props) {
     const [description, setDescription] = useState("");
 
     const update = (cityname) => {
-        ApiCall('/weather/city', {cityname: cityname}).then((res) => {
-            const data = res.data;
-            console.log(data);
-            setTemp(data.main.temp - 273.15);
-            setDescription(data.weather[0].description);
-        });
+        Caller.api('/weather/city', {cityname: cityname})
+            .then((res) => {
+                const data = res.data;
+                setTemp(data.main.temp - 273.15);
+                setDescription(data.weather[0].description);
+            });
     };
 
     return (
