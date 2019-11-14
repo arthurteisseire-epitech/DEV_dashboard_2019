@@ -37,6 +37,11 @@ const userSchema = new Schema({
     default: 'Haskell',
     minlength: 2,
     maxlength: 30
+  },
+  ygg_n: {
+    type: String,
+    required: false,
+    default: '3',
   }
   // activationKey: {
   //   type: String,
@@ -114,6 +119,10 @@ userSchema.method({
 
   setYoutubeTerm(term) {
     this.youtube_term = term;
+  },
+
+  setYggN(n) {
+    this.ygg_n = n;
   }
 });
 

@@ -9,9 +9,7 @@ export default function YggRss() {
     const getRssFeed = () => {
         Caller.api('/ygg/rss')
             .then((res) => {
-                const feed = res.data;
-                setContent([]);
-                const items = feed.items.slice(0, 5).map(i => {
+                const items = res.data.map(i => {
                     return <YggItem key={i.guid} item={i}/>
                 });
                 setContent(items);
