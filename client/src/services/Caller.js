@@ -12,6 +12,15 @@ export function api(link, params = {}) {
     });
 }
 
+export function update(body) {
+    return axios({
+        method: 'post',
+        url: ROOT_URL + '/auth/update',
+        headers: {'Authorization': 'Bearer '+ Cookies.get('token')},
+        data: body
+    });
+}
+
 export function auth(link, body={}) {
     return axios({
         method: 'post',
