@@ -26,12 +26,14 @@ import "assets/scss/argon-dashboard-react.scss";
 import AdminLayout from "layouts/Admin.jsx";
 import AuthLayout from "layouts/Auth.jsx";
 import SignIn from "./login/SignIn";
+import SignUp from "./login/SignUp";
 import {PrivateRoute} from "./login/PrivateRoute";
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/" render={props => <SignIn {...props}/>}/>
+            <Route exact path="/register" render={props => <SignUp {...props}/>}/>
             <Route exact path="/auth" render={props => <AuthLayout {...props} />}/>
             <PrivateRoute exact path="/admin/index" component={AdminLayout}/>
         </Switch>

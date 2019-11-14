@@ -8,9 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as Caller from "../services/Caller";
-import Cookies from 'js-cookie';
-import isAdmin from "./isAdmin";
-
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -39,18 +36,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn() {
 
-    if (isAdmin())
-        window.location = "/admin/index";
-
     const submitHandler = (event) => {
         event.preventDefault();
-        Caller.auth('/login', {
+        Caller.auth('/register', {
             email: event.target.email.value,
             password: event.target.password.value
         }).then((response) => {
-            Cookies.remove('token');
-            Cookies.set('token', response.data.token);
-            window.location = "/admin/index";
+            console.log(response);
+            window.location = "/";
         }).catch((err) => {
             console.log(err);
         });
@@ -62,7 +55,7 @@ export default function SignIn() {
             <CssBaseline/>
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Sign up
                 </Typography>
                 <form className={classes.form} onSubmit={submitHandler}>
                     <TextField
@@ -94,12 +87,12 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/register" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                            <Link href="/" variant="body2">
+                                {"Already have an account? Sign In"}
                             </Link>
                         </Grid>
                     </Grid>
