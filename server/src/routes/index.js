@@ -1,13 +1,16 @@
 'use strict';
+
 const express = require('express');
 const router = express.Router();
-const authRouter = require('./auth.route');
+const authRouter = require('./auth/auth.route');
+const apiRouter = require('./api/api.route');
 
 router.get('/status', (req, res) => {
     res.send({status: 'OK'})
-}); // api status
+});
 
-router.use('/auth', authRouter); // mount auth paths
+router.use('/api', apiRouter);
+router.use('/auth', authRouter);
 
 router.get('/about.json', (req, res) => {
     const aboutJson = {

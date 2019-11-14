@@ -23,6 +23,13 @@ const userSchema = new Schema({
     required: true,
     minlength: 4,
     maxlength: 128
+  },
+  weather_city: {
+    type: String,
+    required: false,
+    default: 'Lille',
+    minlength: 2,
+    maxlength: 30
   }
   // activationKey: {
   //   type: String,
@@ -39,7 +46,7 @@ const userSchema = new Schema({
   // }
 }, {
   timestamps: true
-})
+});
 
 userSchema.pre('save', async function save (next) {
   try {
@@ -80,20 +87,24 @@ userSchema.post('save', async function saved (doc, next) {
 
 userSchema.method({
   transform () {
-    const transformed = {}
-    const fields = ['id', 'name', 'email', 'createdAt', 'role']
+    const transformed = {};
+    const fields = ['id', 'name', 'email', 'createdAt', 'role'];
 
     fields.forEach((field) => {
       transformed[field] = this[field]
-    })
+    });
 
     return transformed
   },
 
   passwordMatches (password) {
     return bcrypt.compareSync(password, this.password)
+  },
+
+  setWeatherCity(cityname) {
+    this.weather_city = cityname;
   }
-})
+});
 
 userSchema.statics = {
   roles,
