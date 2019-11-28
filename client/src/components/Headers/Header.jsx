@@ -18,9 +18,8 @@
 import React from "react";
 
 // reactstrap components
-import {Card, CardBody, CardTitle, Container, Row, Col, Button} from "reactstrap";
+import {Card, CardBody, CardTitle, Container, Row, Col} from "reactstrap";
 import Weather from "./widgets/Weather";
-import cookie from "react-cookies";
 
 class Header extends React.Component {
   render() {

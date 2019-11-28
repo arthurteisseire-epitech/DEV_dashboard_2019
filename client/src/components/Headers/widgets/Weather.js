@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Input from '@material-ui/core/Input';
 import * as Caller from "../../../services/Caller";
-import {Card, CardBody, CardTitle, Container, Row, Col} from "reactstrap";
+import {Card, CardBody, CardTitle, Row, Col} from "reactstrap";
 
 
 export default function Weather(props) {
