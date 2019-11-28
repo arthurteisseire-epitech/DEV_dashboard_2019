@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
 const httpStatus = require('http-status')
 const APIError = require('../utils/APIError')
-const config = require('../config')
 const Schema = mongoose.Schema
 
 const roles = [
