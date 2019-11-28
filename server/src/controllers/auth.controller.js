@@ -21,6 +21,8 @@ exports.update = async (req, res, next) => {
   try {
     const user = req.user;
     user.setWeatherCity(req.body.cityname);
+    user.setYoutubeTerm(req.body.youtube_term);
+    user.setYggN(req.body.ygg_n);
     const savedUser = await user.save();
     res.send(savedUser.transform())
   } catch (error) {

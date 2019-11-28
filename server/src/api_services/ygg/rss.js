@@ -7,7 +7,7 @@ response = (req, res) => {
         if (err)
             res.send(err);
         else
-            res.json(feed);
+            res.json(feed.items.slice(0, parseInt(req.user.ygg_n)));
     })
 };
 

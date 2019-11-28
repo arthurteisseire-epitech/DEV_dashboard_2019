@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import YggItem from "./YggItem";
-import ApiCall from "../../../../services/ApiCall";
+import * as Caller from "../../../../services/Caller";
 
 export default function YggRss() {
 
     const [content, setContent] = useState([]);
 
     const getRssFeed = () => {
-        ApiCall('/ygg/rss').then((res) => {
-            const feed = res.data;
-            setContent([]);
-            const items = feed.items.slice(0, 5).map(i => {
-                return <YggItem key={i.guid} item={i}/>
+        Caller.api('/ygg/rss')
+            .then((res) => {
+                const items = res.data.map(i => {
+                    return <YggItem key={i.guid} item={i}/>
+                });
+                setContent(items);
             });
-            setContent(items);
-        });
     };
 
     useEffect(getRssFeed, []);

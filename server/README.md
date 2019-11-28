@@ -15,13 +15,6 @@
 - Make sure you have installed `Docker` and `Docker Compose`
 - Just run `docker-compose up` to start the server
 
-## Note when setting transporter in `.env`
-
-- TRANSPORTER_SERVICE can be for example `gmail` but also SMTP of your server
-- TRANSPORTER_EMAIL is email from which mails will be sent
-- TRANSPORTER_PASSWORD is password to above email 
-  - if gmail you need to generate special app-password, see for further support: https://support.google.com/mail/answer/185833?hl=en)
-
 ## Changes from original project
 
 - Fixed deprecation warnings with mongoose usage.

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Input from '@material-ui/core/Input';
+import * as Caller from "../../../services/Caller";
 import {Card, CardBody, CardTitle, Row, Col} from "reactstrap";
 import {sortableHandle} from "react-sortable-hoc";
-import ApiCall from "../../../services/ApiCall";
 
 
 export default function Weather(props) {
@@ -11,12 +11,12 @@ export default function Weather(props) {
     const [description, setDescription] = useState("");
 
     const update = (cityname) => {
-        ApiCall('/weather/city', {cityname: cityname}).then((res) => {
-            const data = res.data;
-            console.log(data);
-            setTemp(data.main.temp - 273.15);
-            setDescription(data.weather[0].description);
-        });
+        Caller.api('/weather/city')
+            .then((res) => {
+                const data = res.data;
+                setTemp(data.main.temp - 273.15);
+                setDescription(data.weather[0].description);
+            });
     };
 
     const DragHandle = sortableHandle(() => <i className="fas fa-arrows-alt"/>);
