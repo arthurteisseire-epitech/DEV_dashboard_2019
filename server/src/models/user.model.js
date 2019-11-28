@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
 const httpStatus = require('http-status')
 const APIError = require('../utils/APIError')
-const transporter = require('../services/transporter')
 const config = require('../config')
 const Schema = mongoose.Schema
 
@@ -76,21 +75,6 @@ userSchema.pre('save', async function save (next) {
 
 userSchema.post('save', async function saved (doc, next) {
   try {
-    const mailOptions = {
-      from: 'noreply',
-      to: this.email,
-      subject: 'Confirm creating account',
-      html: `<div><h1>Hello new user!</h1><p>Click <a href="${config.hostname}/api/auth/confirm?key=${this.activationKey}">link</a> to activate your new account.</p></div><div><h1>Hello developer!</h1><p>Feel free to change this template ;).</p></div>`
-    }
-
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error)
-      } else {
-        console.log('Email sent: ' + info.response)
-      }
-    })
-
     return next()
   } catch (error) {
     return next(error)
