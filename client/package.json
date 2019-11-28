@@ -61,12 +61,9 @@
     "react-json-view": "^1.19.1",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.8",
-<<<<<<< HEAD
     "react-sortable-hoc": "^1.10.1",
-=======
     "react-toastify": "^5.4.1",
     "react-toasts": "^3.0.6",
->>>>>>> auth
     "reactstrap": "7.1.0"
   },
   "devDependencies": {
