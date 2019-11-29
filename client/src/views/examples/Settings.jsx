@@ -59,49 +59,49 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <>
-        <Header/>
-        {/* Page content */}
-        <Container className="mt--7" fluid>
-          {/* Dark table */}
-          <Row className="mt-5">
-            <div className="col">
-              <Card className="bg-default shadow">
-                <CardHeader className="bg-transparent border-0">
-                  <h3 className="text-white mb-0">Widget Settings</h3>
-                </CardHeader>
-                <form>
-                  <label>
-                    Weather City:
-                    <input
-                        name="weatherCity"
-                        type="text"
-                        checked={this.state.weatherCity}
-                        onChange={this.handleInputChange} />
-                  </label>
-                  <br />
+        <>
+          <Header/>
+          {/* Page content */}
+          <Container className="mt--7" fluid>
+            {/* Dark table */}
+            <Row className="mt-5">
+              <div className="col">
+                <Card className="bg-default shadow">
+                  <CardHeader className="bg-transparent border-0">
+                    <h3 className="text-white mb-0">Widget Settings</h3>
+                  </CardHeader>
+                  <form>
                     <label>
-                        Youtube Videos:
-                        <input
-                            name="youtubeVideos"
-                            type="text"
-                            value={this.state.youtubeVideos}
-                            onChange={this.handleInputChange} />
+                      Weather City:
+                      <input
+                          name="weatherCity"
+                          type="text"
+                          checked={this.state.weatherCity}
+                          onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <label>
+                      Youtube Videos:
+                      <input
+                          name="youtubeVideos"
+                          type="text"
+                          value={this.state.youtubeVideos}
+                          onChange={this.handleInputChange} />
                     </label>
                     <label>
-                        Submit :
-                        <input
-                            name="submit"
-                            type="submit"
-                            value={this.state.youtubeVideos}
-                            onChange={this.handleInputChange} />
+                      Submit :
+                      <input
+                          name="submit"
+                          type="submit"
+                          value={this.state.youtubeVideos}
+                          onChange={this.handleInputChange} />
                     </label>
-                </form>
-              </Card>
-            </div>
-          </Row>
-        </Container>
-      </>
+                  </form>
+                </Card>
+              </div>
+            </Row>
+          </Container>
+        </>
     );
   }
 }
