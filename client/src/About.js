@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactJson from 'react-json-view';
+import PublicIp from 'public-ip';
 
 export default function About() {
+
+    const [ip, setIp] = useState('');
+
+    useEffect(() => {
+        PublicIp.v4().then((res) => {
+            setIp(res);
+        });
+    });
+
     const aboutJson = {
         client: {
-            // host: req.connection.remoteAddress
+            host: ip
         },
         server: {
             current_time: Date.now(),
