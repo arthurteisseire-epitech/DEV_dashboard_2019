@@ -10,36 +10,31 @@ import Weather from "./widgets/Weather";
 import YoutubeReader from "./widgets/youtube/readerComponent/YoutubeReader";
 import YggRss from "./widgets/ygg/YggRss";
 import {Card, CardGroup} from "reactstrap";
+import Grid from "@material-ui/core/Grid";
 
 
 export default function WidgetZone() {
-    const [items, setItems] = useState([<Weather/>, <Weather/>, <Weather/>]);
-    // const [items, setItems] = useState([<Weather/>, <YoutubeReader/>, <YggRss/>]);
-
-    const SortableContainer = sortableContainer(({children}) => {
-        return <CardGroup>{children}</CardGroup>;
-    });
+    const [items, setItems] = useState([<Weather/>, <Weather/>, <Weather/>, <Weather/>, <Weather/>]);
 
     const SortableItem = sortableElement(({value}) => (
-        <Card>
+        <Grid item xs={4}>
             {value}
-        </Card>
+        </Grid>
     ));
 
-    const ListItems = items.map((value, index) =>
-        <SortableItem index={index} value={value}/>
-    );
+    const SortableContainer = sortableContainer(({children}) => {
+        return <Grid container spacing={1}>{children}</Grid>;
+    });
 
     function onSortEnd({oldIndex, newIndex}) {
-        console.log(items, oldIndex, newIndex);
-        setItems({
-            items: arrayMove(items, oldIndex, newIndex),
-        });
+            setItems(arrayMove(items, oldIndex, newIndex));
     }
 
     return (
         <SortableContainer onSortEnd={onSortEnd} useDragHandle axis={'xy'}>
-            {ListItems}
+            {items.map((value, index) => (
+                <SortableItem index={index} value={value}/>
+            ))}
         </SortableContainer>
     );
 }
