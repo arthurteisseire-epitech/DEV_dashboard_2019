@@ -47,6 +47,7 @@ import {
 } from "variables/charts.jsx";
 
 import Header from "components/Dashboard/Dashboard.jsx";
+import Settings from "./examples/Settings";
 
 class Index extends React.Component {
   state = {
@@ -70,7 +71,8 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header/>
+        <Settings/>
       </>
     );
   }

@@ -27,19 +27,5 @@ var routes = [
     component: Index,
     layout: "/admin"
   },
-  {
-    path: "/settings",
-    name: "Settings",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: Settings,
-    layout: "/admin"
-  },
-  {
-    path: "/profile",
-    name: "Profile",
-    icon: "ni ni-single-02 text-yellow",
-    component: Profile,
-    layout: "/admin"
-  },
 ];
 export default routes;

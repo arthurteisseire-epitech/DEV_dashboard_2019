@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Input from '@material-ui/core/Input';
+import React, {useEffect, useState} from 'react';
 import * as Caller from "../../../services/Caller";
 import {Card, CardBody, CardTitle, Row, Col} from "reactstrap";
 import {sortableHandle} from "react-sortable-hoc";
@@ -9,15 +8,26 @@ export default function Weather(props) {
 
     const [temp, setTemp] = useState(0);
     const [description, setDescription] = useState("");
+    const [imageId, setImageId] = useState("");
+    const [loaded, setLoad] = useState(false);
+    const [cityName, setCityName] = useState("");
 
-    const update = (cityname) => {
+    useEffect(() => {
         Caller.api('/weather/city')
             .then((res) => {
                 const data = res.data;
                 setTemp(data.main.temp - 273.15);
                 setDescription(data.weather[0].description);
+                setImageId('http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+                setCityName(data.name);
+                console.log(data)
             });
-    };
+    });
+
+    if (!loaded) {
+        setLoad(true);
+
+    }
 
     const DragHandle = sortableHandle(() => <i className="fas fa-arrows-alt"/>);
 
@@ -28,21 +38,15 @@ export default function Weather(props) {
                     <DragHandle/>
                     <div className="col">
                         <CardTitle tag="h5" className="text-uppercase text-muted mb-0">
-                            Weather
+                            Weather {cityName}
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                            <Input
-                                onChange={event => update(event.target.value)}
-                                placeholder="City Name"
-                                inputProps={{
-                                    'aria-label': 'description',
-                                }}
-                            />
+                            <span className="text-nowrap">{description}</span>
                           </span>
                     </div>
                     <Col className="col-auto">
                         <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                            <i className="fas fa-cloud"/>
+                            <img src={imageId}/>
                         </div>
                     </Col>
                 </Row>
@@ -50,7 +54,6 @@ export default function Weather(props) {
                         <span className="mr-2">
                           <i className="fas"/> {temp.toFixed(2)} °C
                         </span>{" "}
-                    <span className="text-nowrap">Description: {description}</span>
                 </p>
             </CardBody>
         </Card>

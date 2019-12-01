@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
     sortableContainer,
     sortableElement,
@@ -7,38 +7,39 @@ import {
 import arrayMove from 'array-move';
 import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 import Weather from "./widgets/Weather";
+import YoutubeReader from "./widgets/youtube/readerComponent/YoutubeReader";
+import YggRss from "./widgets/ygg/YggRss";
 import {Card, CardGroup} from "reactstrap";
 
-const SortableItem = sortableElement(({value}) => (
-    <Card>
-        {value}
-    </Card>
-));
 
-const SortableContainer = sortableContainer(({children}) => {
-    return <CardGroup>{children}</CardGroup>;
-});
+export default function WidgetZone() {
+    const [items, setItems] = useState([<Weather/>, <Weather/>, <Weather/>]);
+    // const [items, setItems] = useState([<Weather/>, <YoutubeReader/>, <YggRss/>]);
 
-export default class WidgetZone extends Component {
-    state = {
-        items: [<Weather/>, <Weather/>, <Weather/>, <Weather/>, <Weather/>],
-    };
+    const SortableContainer = sortableContainer(({children}) => {
+        return <CardGroup>{children}</CardGroup>;
+    });
 
-    onSortEnd = ({oldIndex, newIndex}) => {
-        this.setState(({items}) => ({
+    const SortableItem = sortableElement(({value}) => (
+        <Card>
+            {value}
+        </Card>
+    ));
+
+    const ListItems = items.map((value, index) =>
+        <SortableItem index={index} value={value}/>
+    );
+
+    function onSortEnd({oldIndex, newIndex}) {
+        console.log(items, oldIndex, newIndex);
+        setItems({
             items: arrayMove(items, oldIndex, newIndex),
-        }));
-    };
-
-    render() {
-        const {items} = this.state;
-
-        return (
-            <SortableContainer onSortEnd={this.onSortEnd} useDragHandle axis={'xy'}>
-                {items.map((value, index) => (
-                    <SortableItem index={index} value={value}/>
-                ))}
-            </SortableContainer>
-        );
+        });
     }
+
+    return (
+        <SortableContainer onSortEnd={onSortEnd} useDragHandle axis={'xy'}>
+            {ListItems}
+        </SortableContainer>
+    );
 }
