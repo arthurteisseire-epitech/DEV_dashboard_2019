@@ -11,10 +11,13 @@ import YoutubeReader from "./widgets/youtube/readerComponent/YoutubeReader";
 import YggRss from "./widgets/ygg/YggRss";
 import {Card, CardGroup} from "reactstrap";
 import Grid from "@material-ui/core/Grid";
+import YoutubeViews from "./widgets/youtube/YoutubeViews";
+import YoutubeLikes from "./widgets/youtube/YoutubeLikes";
+import YoutubeCommentCount from "./widgets/youtube/YoutubeCommentsCount";
 
 
 export default function WidgetZone() {
-    const [items, setItems] = useState([<Weather/>, <Weather/>, <Weather/>, <Weather/>, <Weather/>]);
+    const [items, setItems] = useState([<Weather/>, <YoutubeViews/>, <YoutubeLikes/>, <YoutubeCommentCount/>, <YoutubeReader/>, <YggRss/>]);
 
     const SortableItem = sortableElement(({value}) => (
         <Grid item xs={4}>

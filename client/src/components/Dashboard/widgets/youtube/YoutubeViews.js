@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import * as Caller from '../../../../services/Caller';
+import {Card, CardBody, CardTitle, Col, Row} from "reactstrap";
+import DragHandle from "../../DragHandle";
+import {sortableHandle} from "react-sortable-hoc";
 
 export default function YoutubeViews(props) {
     const [nbViews, setNbViews] = useState(0);
@@ -12,9 +15,28 @@ export default function YoutubeViews(props) {
             });
     });
 
+    const DragHandle = sortableHandle(() => <i className="fas fa-arrows-alt"/>);
+
     return (
-        <div>
-            {nbViews}
-        </div>
+        <Card className="card-stats mb-4 mb-xl-0">
+            <CardBody>
+                <Row>
+                    <DragHandle/>
+                    <div className="col">
+                        <CardTitle tag="h5" className="text-uppercase text-muted mb-0">
+                            Youtube view count :
+                        </CardTitle>
+                        <span className="h2 font-weight-bold mb-0">
+                            <span className="text-nowrap">{nbViews} Views</span>
+                          </span>
+                    </div>
+                    <Col className="col-auto">
+                        <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <img src="https://cdn.icon-icons.com/icons2/1584/PNG/512/3721679-youtube_108064.png"/>
+                        </div>
+                    </Col>
+                </Row>
+            </CardBody>
+        </Card>
     )
 }

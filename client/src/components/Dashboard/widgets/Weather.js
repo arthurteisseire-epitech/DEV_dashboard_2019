@@ -8,7 +8,7 @@ export default function Weather(props) {
 
     const [temp, setTemp] = useState(0);
     const [description, setDescription] = useState("");
-    const [imageId, setImageId] = useState("");
+    const [imageId, setImageId] = useState("https://cdn.icon-icons.com/icons2/935/PNG/512/sun-day-weather-symbol_icon-icons.com_73146.png");
     const [loaded, setLoad] = useState(false);
     const [cityName, setCityName] = useState("");
 
