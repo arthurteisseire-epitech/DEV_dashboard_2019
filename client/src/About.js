@@ -27,6 +27,27 @@ export default function About() {
                         name: "youtube_term",
                         type: "string"
                     }]
+                },{
+                    name: "youtube_views",
+                    description: "Display the number of views of a video",
+                    params: [{
+                        name: "youtube_video_id",
+                        type: "string"
+                    }]
+                },{
+                    name: "youtube_comments",
+                    description: "Display the number of comments of a video",
+                    params: [{
+                        name: "youtube_video_id",
+                        type: "string"
+                    }]
+                },{
+                    name: "youtube_likes",
+                    description: "Display the number of likes of a video",
+                    params: [{
+                        name: "youtube_video_id",
+                        type: "string"
+                    }]
                 }]
             }, {
                 name: "ygg",
