@@ -39,6 +39,7 @@ export default function Settings() {
             cityname: event.target.weatherCity.value,
             youtube_term: event.target.youtubeVideos.value,
             ygg_n: event.target.ygg_id.value,
+            youtube_video_id: event.target.youtube_video_id.value,
         }).then((response) => {
             window.location = "/admin/index";
         }).catch((err) => {
@@ -56,7 +57,7 @@ export default function Settings() {
 
     return (
         <>
-            <Container className="mt--7" fluid>
+            <Container className="mt-7">
                 {/* Dark table */}
                 <Row className="mt-5">
                     <div className="col">
@@ -83,6 +84,16 @@ export default function Settings() {
                                     name="youtubeVideos"
                                     label="Youtube Search"
                                     id="youtubeVideos"
+                                    autoComplete="current-password"
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="youtube_video_id"
+                                    label="Youtube video id"
+                                    id="youtubeVideoId"
                                     autoComplete="current-password"
                                 />
                                 <TextField

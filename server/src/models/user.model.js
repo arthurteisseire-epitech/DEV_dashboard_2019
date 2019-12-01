@@ -40,6 +40,11 @@ const userSchema = new Schema({
     type: String,
     required: false,
     default: '3',
+  },
+  youtube_video_id: {
+    type: String,
+    required: false,
+    default: '0',
   }
   // activationKey: {
   //   type: String,
@@ -106,6 +111,10 @@ userSchema.method({
 
   setYggN(n) {
     this.ygg_n = n;
+  },
+
+  setYoutubeVideoId(id) {
+    this.youtube_video_id = id;
   }
 });
 
