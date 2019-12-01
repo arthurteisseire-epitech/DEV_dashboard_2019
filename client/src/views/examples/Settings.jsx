@@ -35,7 +35,7 @@ export default function Settings() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        Caller.update('/update', {
+        Caller.update({
             cityname: event.target.weatherCity.value,
             youtube_term: event.target.youtubeVideos.value,
             ygg_n: event.target.ygg_id.value,
